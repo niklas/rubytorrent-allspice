@@ -31,18 +31,23 @@ module RubyTorrent
   class GenerateError < StandardError; end
   class Generate
     def initialize(target_file, source_files, trackers, piece_size = 256, comments = '')
+      @target_file = target_file
       @source_files = source_files
+      @trackers = trackers
+      @piece_size = piece_size
+      @comments = comments
+      
       raise RubyTorrent::GenerateError, "no target file specified." if target_file.to_s == ''
       raise RubyTorrent::GenerateError, "no source files found." if source_files.empty?
       raise RubyTorrent::GenerateError, "need at least one tracker." if trackers.size == 0
       raise RubyTorrent::GenerateError, "piece size not one of: [64, 128, 256, 512, 1024, 2048, 4096]" unless [64, 128, 256, 512, 1024, 2048, 4096].include?(piece_size)
       raise RubyTorrent::GenerateError, "specify a target_file that does not exist.  No overwriting allowed." if File.exists?(target_file)
 
-      puts "Scanning..."
+      # puts "Scanning..."
       files = source_files.map { |f| find_files f }.flatten
       single = files.length == 1
 
-      puts "Building #{(single ? 'single' : 'multi')}-file .torrent for #{files.length} file#{(single ? '' : 's')}."
+      # puts "Building #{(single ? 'single' : 'multi')}-file .torrent for #{files.length} file#{(single ? '' : 's')}."
 
       mi = RubyTorrent::MetaInfo.new
       mii = RubyTorrent::MetaInfoInfo.new
@@ -60,7 +65,7 @@ module RubyTorrent
       # puts %{We'll use "#{mii.name}".}
 
       # puts
-      puts "Measuring..."
+      # puts "Measuring..."
       length = nil
       if single
         length = mii.length = files.inject(0) { |s, f| s + File.size(f) }
@@ -76,13 +81,13 @@ module RubyTorrent
         end
       end
 
-      puts "\n\nThe file is #{length.to_size_s}. What piece size would you like? A smaller piece size\nwill result in a larger .torrent file; a larger piece size may cause\ntransfer inefficiency. Common sizes are 256, 512, and 1024kb.\n\nHint: for this .torrent,"
+      # puts "\n\nThe file is #{length.to_size_s}. What piece size would you like? A smaller piece size\nwill result in a larger .torrent file; a larger piece size may cause\ntransfer inefficiency. Common sizes are 256, 512, and 1024kb.\n\nHint: for this .torrent,"
 
       size = nil
       [64, 128, 256, 512, 1024, 2048, 4096].each do |size|
         num_pieces = (length.to_f / size / 1024.0).ceil
         tsize = num_pieces.to_f * 20.0 + 100
-        puts "  - piece size of #{size}kb => #{num_pieces} pieces and .torrent size of approx. #{tsize.to_size_s}."
+        # puts "  - piece size of #{size}kb => #{num_pieces} pieces and .torrent size of approx. #{tsize.to_size_s}."
         break if tsize < 10240
       end
 
@@ -99,9 +104,9 @@ module RubyTorrent
 
       mii.piece_length = plen * 1024
       num_pieces = (length.to_f / mii.piece_length.to_f).ceil
-      puts "Using piece size of #{plen}kb => .torrent size of approx. #{(num_pieces * 20.0).to_size_s}."
+      # puts "Using piece size of #{plen}kb => .torrent size of approx. #{(num_pieces * 20.0).to_size_s}."
 
-      print "Calculating #{num_pieces} piece SHA1s... " ; $stdout.flush
+      # print "Calculating #{num_pieces} piece SHA1s... " ; $stdout.flush
 
       mii.pieces = ""
       i = 0
@@ -109,10 +114,10 @@ module RubyTorrent
         mii.pieces += Digest::SHA1.digest(piece)
         i += 1
         if (i % 100) == 0
-          print "#{(i.to_f / num_pieces * 100.0).round}%... "; $stdout.flush
+          # print "#{(i.to_f / num_pieces * 100.0).round}%... "; $stdout.flush
         end
       end
-      puts "done"
+      # puts "done"
 
       mi.info = mii
       # puts <<EOS
@@ -178,7 +183,7 @@ module RubyTorrent
 
       name = target_file  #(name == "" ? maybe_name : name)
       File.open(name, "w") do |f|
-        puts "name: #{name} #{mi.inspect}\n\n#{mi.to_bencoding}\n\n#{mi.class.name}\n\n"
+        # puts "name: #{name} #{mi.inspect}\n\n#{mi.to_bencoding}\n\n#{mi.class.name}\n\n"
         f.write mi.to_bencoding
       end
 
