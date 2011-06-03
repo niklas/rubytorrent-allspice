@@ -19,6 +19,7 @@ require 'rubytorrent-allspice/metainfo'
 require 'rubytorrent-allspice/tracker'
 require 'rubytorrent-allspice/package'
 require 'rubytorrent-allspice/server'
+require 'rubytorrent-allspice/generate'
 
 require "socket"
 Socket.do_not_reverse_lookup = true

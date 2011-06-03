@@ -28,7 +28,8 @@ Gem::Specification.new do |s|
              "lib/rubytorrent-allspice/metainfo.rb","lib/rubytorrent-allspice/package.rb",
              "lib/rubytorrent-allspice/peer.rb","lib/rubytorrent-allspice/server.rb",
              "lib/rubytorrent-allspice/tracker.rb","lib/rubytorrent-allspice/typedstruct.rb",
-             "lib/rubytorrent-allspice/util.rb","rtpeercomplete.rb","rtpeercursescomplete.rb"]
+             "lib/rubytorrent-allspice/util.rb","rtpeercomplete.rb","rtpeercursescomplete.rb",
+             "lib/rubytorrent-allspice/generate.rb"]
 
   s.platform = Gem::Platform::RUBY
 

@@ -1,3 +1,23 @@
+Release notes for 0.3.2
+
+- Added RubyTorrent::Generate to allow the creation of Torrent files.
+
+  irb -rubygems
+  >> require 'rubytorrent-allspice'
+  >> RubyTorrent::Generate.new('./new_torrent_file.torrent',
+                               ["/path/to/file", "/path/to/folder/"],
+                               ['http://127.0.0.1:6969/announce'],
+                               256, 'My Awesome Torrent')
+  
+  # Will create "new_torrent_file.torrent" in the current directory if the
+  # file doesn't already exist.  Only the torrent file name, source files,
+  # and one tracker is required.  Including piece size and comments is
+  # optional.
+
+
+
+----------------------------------------------------------------------------
+
 Release notes for 0.3:
 
 Many more bug fixes. Speed is now basically comparable to Bram's client---at
