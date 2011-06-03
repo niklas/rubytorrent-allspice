@@ -1,0 +1,53 @@
+3 June 2011 - Remo
+
+  Based on RubyTorrent 0.3.0 gem, this gem makes RubyTorrent 0.3.0 compatible with Ruby 1.9.2.
+  Changes are also made to rtpeer.rb and rtpeer-ncurses.rb to allow them to be transformed into
+  Windows executables using ocra with an embedded .torrent file.
+  
+  Changes to files may cause incompatibilities with the original RubyTorrent!
+  
+  rtpeercomplete.rb: Now looks for an existing torrent file in the current directory.  This allows
+  Ocra to embed a torrent file into the executable that will automatically be loaded.
+  
+  rtpeercursescomplete.rb: Also looks for an existing torrent file.  This uses the standard Ruby
+  Curses library since ncurses was incompatible in windows.  Now Ocra can be used to create a
+  Windows executable with a nice Curses shell (without the dependencies!).
+  
+  gem install ocra
+  
+  To compile an executable that runs on windows:  (Must be "compiled" on a windows machine)
+  
+    ocra rtpeercomplete.rb <torrent_name>.torrent
+    
+  or
+    
+    ocra rtpeercursescomplete.rb <torrent_name>.torrent
+  
+  Then just double click the executables to run.
+
+
+================================================================================
+Original README
+
+
+Try it out
+----------
+
+RubyTorrent is primarily a library. See doc/api.txt for an example of how to
+use it in your Ruby applications. There are also a few executable scripts for
+you to play around with.
+
+rtpeer.rb: downloads a BitTorrent package.
+
+rtpeer-ncurses.rb: a nicer, ncurses version of the same. (The standard Ruby
+curses library appears not to play nicely with Threads, so we can't use it.)
+
+dump-metainfo.rb: takes a .torrent metainfo file and spits out everything about
+it.
+
+make-metainfo.rb: creates a .torrent file.
+
+dump-peers.rb: takes a .torrent metainfo file, connects to the tracker, and
+displays all the peers. (hack.)
+
+-- William <wmorgan-rubytorrent@masanjin.net>
