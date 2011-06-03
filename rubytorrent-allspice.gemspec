@@ -9,7 +9,7 @@
 Gem::Specification.new do |s|
   
   s.name = "rubytorrent-allspice"
-  s.version = "0.3.1"
+  s.version = "0.3.2"
   s.date = "2011-06-03"
   s.summary = "Based on RubyTorrent 0.3.0, an update to work with Ruby 1.9.2"
   s.homepage = "https://github.com/remomueller"

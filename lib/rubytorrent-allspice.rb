@@ -24,7 +24,7 @@ require "socket"
 Socket.do_not_reverse_lookup = true
 
 module RubyTorrent
-  VERSION = '0.3.1'
+  VERSION = '0.3.2'
 
 ## the top-level class for RubyTorrent.
 class BitTorrent
