@@ -184,7 +184,7 @@ module RubyTorrent
       name = target_file  #(name == "" ? maybe_name : name)
       File.open(name, "w") do |f|
         # puts "name: #{name} #{mi.inspect}\n\n#{mi.to_bencoding}\n\n#{mi.class.name}\n\n"
-        f.write mi.to_bencoding
+        f.write mi.to_bencoding.force_encoding('UTF-8')
       end
 
       puts "Succesfully created #{name}"
