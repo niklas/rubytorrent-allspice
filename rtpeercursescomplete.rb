@@ -14,6 +14,7 @@
 ## General Public License (in the file COPYING) for more details.
 
 require "net/http"
+require "net/https"
 require "rubytorrent-allspice"
 require "curses"
 #require "optparse"
