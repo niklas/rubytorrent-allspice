@@ -1,6 +1,6 @@
 3 June 2011 - Remo
 
-  Based on RubyTorrent 0.3.0 gem, this gem makes RubyTorrent 0.3.0 compatible with Ruby 1.9.2.
+  Based on RubyTorrent 0.3.0 gem by William Morgan, this gem makes RubyTorrent compatible with Ruby 1.9.2.
   Changes are also made to rtpeer.rb and rtpeer-ncurses.rb to allow them to be transformed into
   Windows executables using ocra with an embedded .torrent file.
   

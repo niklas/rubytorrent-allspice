@@ -13,12 +13,12 @@ Gem::Specification.new do |s|
   s.name = "rubytorrent-allspice"
   s.version = RubyTorrent::VERSION.dup
   s.platform = Gem::Platform::RUBY
-  s.summary = "Based on RubyTorrent 0.3.0, an update to work with Ruby 1.9.2"
+  s.summary = "Based on RubyTorrent 0.3.0 by William Morgan, an update to work with Ruby 1.9.2"
   s.email = "remosm@gmail.com"
   s.homepage = "https://github.com/remomueller"
   s.authors = ["Remo Mueller"]
   
-  s.description = "Based on RubyTorrent 0.3.0 gem, this gem makes RubyTorrent 0.3.0 compatible with Ruby 1.9.2.
+  s.description = "Based on RubyTorrent 0.3.0 gem by William Morgan, this gem makes RubyTorrent compatible with Ruby 1.9.2.
   Changes are also made to rtpeer.rb and rtpeer-ncurses.rb to allow them to be transformed into
   Windows executables using ocra with an embedded .torrent file.
   
