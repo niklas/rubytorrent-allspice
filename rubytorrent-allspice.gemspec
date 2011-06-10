@@ -6,14 +6,16 @@
 # gem list -r rubytorrent-allspice
 # gem install rubytorrent-allspice
 
+$:.push File.expand_path("../lib", __FILE__)
+require "rubytorrent-allspice/version"
+
 Gem::Specification.new do |s|
-  
   s.name = "rubytorrent-allspice"
-  s.version = "0.3.4"
-  s.date = Time.now.strftime("%Y-%m-%d")
+  s.version = RubyTorrent::VERSION.dup
+  s.platform = Gem::Platform::RUBY
   s.summary = "Based on RubyTorrent 0.3.0, an update to work with Ruby 1.9.2"
-  s.homepage = "https://github.com/remomueller"
   s.email = "remosm@gmail.com"
+  s.homepage = "https://github.com/remomueller"
   s.authors = ["Remo Mueller"]
   
   s.description = "Based on RubyTorrent 0.3.0 gem, this gem makes RubyTorrent 0.3.0 compatible with Ruby 1.9.2.
@@ -30,7 +32,4 @@ Gem::Specification.new do |s|
              "lib/rubytorrent-allspice/tracker.rb","lib/rubytorrent-allspice/typedstruct.rb",
              "lib/rubytorrent-allspice/util.rb","rtpeercomplete.rb","rtpeercursescomplete.rb",
              "lib/rubytorrent-allspice/generate.rb"]
-
-  s.platform = Gem::Platform::RUBY
-
 end

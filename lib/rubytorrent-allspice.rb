@@ -20,12 +20,12 @@ require 'rubytorrent-allspice/tracker'
 require 'rubytorrent-allspice/package'
 require 'rubytorrent-allspice/server'
 require 'rubytorrent-allspice/generate'
+require 'rubytorrent-allspice/version'
 
 require "socket"
 Socket.do_not_reverse_lookup = true
 
 module RubyTorrent
-  VERSION = '0.3.4'
 
 ## the top-level class for RubyTorrent.
 class BitTorrent
