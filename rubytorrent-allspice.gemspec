@@ -31,5 +31,5 @@ Gem::Specification.new do |s|
              "lib/rubytorrent-allspice/peer.rb","lib/rubytorrent-allspice/server.rb",
              "lib/rubytorrent-allspice/tracker.rb","lib/rubytorrent-allspice/typedstruct.rb",
              "lib/rubytorrent-allspice/util.rb","rtpeercomplete.rb","rtpeercursescomplete.rb",
-             "lib/rubytorrent-allspice/generate.rb"]
+             "lib/rubytorrent-allspice/generate.rb", "lib/rubytorrent-allspice/version.rb"]
 end
