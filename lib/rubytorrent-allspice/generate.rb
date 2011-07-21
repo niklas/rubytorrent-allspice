@@ -75,7 +75,11 @@ module RubyTorrent
           miif = RubyTorrent::MetaInfoInfoFile.new
           miif.length = File.size f
           miif.path = f.split File::SEPARATOR
-          miif.path = miif.path[1, miif.path.length - 1] if miif.path[0] == mii.name
+          # miif.path = miif.path[1, miif.path.length - 1] if miif.path[0] == mii.name
+
+          # Create flat torrents.
+          miif.path = [miif.path.last]
+          
           mii.files << miif
           s + miif.length
         end
