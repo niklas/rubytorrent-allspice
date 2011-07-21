@@ -1,8 +1,8 @@
 # Compiling the Gem
 # gem build rubytorrent-allspice.gemspec
-# [sudo] gem install ./rubytorrent-allspice-0.3.1.gem
+# [sudo] gem install ./rubytorrent-allspice-0.3.x.gem
 #
-# gem push rubytorrent-allspice-0.3.1.gem
+# gem push rubytorrent-allspice-0.3.x.gem
 # gem list -r rubytorrent-allspice
 # gem install rubytorrent-allspice
 
