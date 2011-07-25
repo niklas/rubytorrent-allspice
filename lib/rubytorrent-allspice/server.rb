@@ -139,7 +139,7 @@ class Server
 
     len = sock.recv(1)[0]
 #    rt_debug "length #{len.inspect}"
-    raise ProtocolError, "invalid handshake length byte #{len.inspect}" unless len.each_byte.collect{|b| b}.first == 19
+    raise ProtocolError, "invalid handshake length byte #{len.inspect}" unless len and len.each_byte.collect{|b| b}.first == 19
 
     name = sock.recv(19)
 #    rt_debug "name #{name.inspect}"
