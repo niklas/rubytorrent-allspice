@@ -1,0 +1,27 @@
+== Planned
+
+* Documentation
+  * Document previous releases and fixes.
+
+* Enhancements
+
+== 0.3.7
+
+* Documentation
+  * Added changelog to track changes.
+
+== 0.3.6
+
+== 0.3.5
+
+* Bug Fix
+  * Include version.rb in the gemspec so gem install doesn't fail
+
+== 0.3.4
+
+* Notes
+  * Version was yanked due to missing files in gemspec
+
+== 0.3.3
+
+== 0.3.2
