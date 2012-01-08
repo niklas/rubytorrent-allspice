@@ -134,19 +134,7 @@ end
 class MetaInfo
   def initialize(dict=nil)
     # raise TypeError, "argument must be a Hash (maybe see MetaInfo.from_location)" unless dict.is_a? Hash
-    @s = TypedStruct.new do |s|
-      s.field :info => MetaInfoInfo, :announce => URI::HTTP,
-              :announce_list => Array, :creation_date => Time,
-              :comment => String, :created_by => String, :encoding => String
-      s.label :announce_list => "announce-list", :creation_date => "creation date",
-              :created_by => "created by"
-      s.array :announce_list
-      s.coerce :info => lambda { |x| MetaInfoInfo.new(x) },
-               :creation_date => lambda { |x| Time.at(x) },
-               :announce => lambda { |x| URI.parse(x) },
-               :announce_list => lambda { |x| x.map { |y| y.map { |z| URI.parse(z) } } }
-    end
-
+    @s = build_struct
     @dict = dict
     unless dict.nil?
       @s.parse dict
@@ -210,6 +198,22 @@ class MetaInfo
       end.flatten
     else
       [announce]
+    end
+  end
+
+  private
+  def build_struct
+    TypedStruct.new do |s|
+      s.field :info => MetaInfoInfo, :announce => URI::HTTP,
+              :announce_list => Array, :creation_date => Time,
+              :comment => String, :created_by => String, :encoding => String
+      s.label :announce_list => "announce-list", :creation_date => "creation date",
+              :created_by => "created by"
+      s.array :announce_list
+      s.coerce :info => lambda { |x| MetaInfoInfo.new(x) },
+               :creation_date => lambda { |x| Time.at(x) },
+               :announce => lambda { |x| URI.parse(x) },
+               :announce_list => lambda { |x| x.map { |y| y.map { |z| URI.parse(z) } } }
     end
   end
 end
