@@ -148,7 +148,7 @@ class MetaInfo
   def check
     if @s.announce_list
       @s.announce_list.select! do |tier|
-        tier.index{|track|track.is_a? URI::HTTP}
+        tier.index{|track|track.is_a? uri_class}
       end
       raise MetaInfoFormatError, "expecting HTTP URL in announce-list" if @s.announce_list.count == 0
     end
@@ -202,9 +202,13 @@ class MetaInfo
   end
 
   private
+  def uri_class
+    URI::HTTP
+  end
+
   def build_struct
     TypedStruct.new do |s|
-      s.field :info => MetaInfoInfo, :announce => URI::HTTP,
+      s.field :info => MetaInfoInfo, :announce => uri_class,
               :announce_list => Array, :creation_date => Time,
               :comment => String, :created_by => String, :encoding => String
       s.label :announce_list => "announce-list", :creation_date => "creation date",
